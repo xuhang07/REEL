@@ -2,7 +2,7 @@
 
 ### Learning to Retrieve, Evaluate, and Evolve Visual Memory for Any Long-Horizon Multi-Shot Video Generation
 
-**[Project page](https://xuhang07.github.io/REEL/)** · **[Paper](https://xuhang07.github.io/REEL/assets/reel.pdf)** · **Hugging Face weights: coming soon**
+**[Project page](https://xuhang07.github.io/REEL/)** · **[Paper](https://xuhang07.github.io/REEL/assets/reel.pdf)** · **Weights: [sft](https://huggingface.co/redflash6/sft) / [singleshotgrpo](https://huggingface.co/redflash6/singleshotgrpo) / [multishotgrpo](https://huggingface.co/redflash6/multishotgrpo)**
 
 Hang Xu¹, Guohui Zhang¹, Xiaoxiao Ma¹, Hu Yu¹, Jie Huang¹, Jiayin Xiao¹, Lin Song², Haoyang Huang², Nan Duan², Feng Zhao²
 
@@ -25,7 +25,7 @@ REEL is a trainable, tool-using visual-memory planner. It retrieves relevant ref
 | `patches/` | Compatibility patches for the VERL / SGLang runtime |
 | `docs/` | Static project website and manuscript table values |
 
-The `storymem_*` module names are retained to preserve implementation imports and schema compatibility; the method is **REEL**. This release contains research code, not a hosted generation service. Planner weights, benchmark inputs, and training datasets are not bundled. The Hugging Face checkpoint link will be added when weights are released.
+The `storymem_*` module names are retained to preserve implementation imports and schema compatibility; the method is **REEL**. This release contains research code, not a hosted generation service. Planner weights are hosted separately on Hugging Face: SFT step 1034, single-shot GRPO step 100, and multi-shot GRPO step 50. Benchmark inputs and training datasets are not bundled.
 
 ## Core setup
 

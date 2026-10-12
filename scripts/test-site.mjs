@@ -22,6 +22,10 @@ try {
   assert.equal(await page.locator('.authors > span').count(), 10);
   for (const value of ['+2.41', '+8.32', '+15.1%', '+20.7%']) assert.ok((await page.locator('#headline-results').innerText()).includes(value));
   report.checks.push('Ten authors, affiliations, and four derived headline improvements');
+  assert.deepEqual(await page.locator('#weights .model-links a').evaluateAll(links => links.map(link => link.href)), ['sft', 'singleshotgrpo', 'multishotgrpo'].map(name => `https://huggingface.co/redflash6/${name}`));
+  assert.match(await page.locator('#weights').innerText(), /step-50/);
+  assert.equal(await page.locator('.hero-actions a[href="#weights"]').count(), 1);
+  report.checks.push('Three Hugging Face checkpoint links and the selected multi-shot step');
   for (const [benchmarkId, benchmark] of Object.entries(results.benchmarks)) {
     await page.locator(`[data-benchmark="${benchmarkId}"]`).click();
     for (const [backend, rows] of Object.entries(benchmark.backends)) {

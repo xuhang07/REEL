@@ -36,7 +36,7 @@
       <div class="hero-actions">
         <a class="button button-primary" href="assets/reel.pdf" target="_blank" rel="noopener">Read the paper ↗</a>
         <a class="button button-secondary" href="https://github.com/xuhang07/REEL" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg> Code</a>
-        <span class="button button-unavailable" aria-label="Hugging Face weights, coming soon">Hugging Face <span class="tiny-badge">Coming soon</span></span>
+        <a class="button button-secondary" href="#weights">Hugging Face weights ↓</a>
         <a class="citation-link" href="#citation">BibTeX ↓</a>
       </div>
       <p class="hero-tldr">One planner learns <strong>what to remember</strong> and <strong>when to reuse it</strong>.<br class="desktop-break"> Different video backends bring the story to life.</p>
@@ -109,7 +109,7 @@
       <div class="resource-grid">
         <a class="resource-card" href="assets/reel.pdf" target="_blank" rel="noopener"><span class="resource-icon" aria-hidden="true">↗</span><span class="section-kicker">Paper</span><h3>Read the preprint</h3><p>The method, full results, and supplementary material.</p><span class="resource-action">Open PDF ↗</span></a>
         <a class="resource-card" href="https://github.com/xuhang07/REEL" target="_blank" rel="noopener noreferrer"><span class="resource-icon" aria-hidden="true">⌘</span><span class="section-kicker">Implementation</span><h3>Explore the code</h3><p>Memory-planning tools, backend interfaces, and training components.</p><span class="resource-action">xuhang07 / REEL ↗</span></a>
-        <article class="resource-card resource-pending"><span class="resource-icon" aria-hidden="true">◷</span><span class="section-kicker">Hugging Face</span><h3>Planner weights</h3><p>Checkpoints will be linked here when available.</p><span class="tiny-badge">Coming soon</span></article>
+        <article class="resource-card" id="weights"><span class="resource-icon" aria-hidden="true">↗</span><span class="section-kicker">Hugging Face</span><h3>Planner weights</h3><p>Three training stages. Multi-shot GRPO uses the step-50 checkpoint.</p><div class="model-links"><a href="https://huggingface.co/redflash6/sft" target="_blank" rel="noopener noreferrer">sft ↗</a><a href="https://huggingface.co/redflash6/singleshotgrpo" target="_blank" rel="noopener noreferrer">singleshotgrpo ↗</a><a href="https://huggingface.co/redflash6/multishotgrpo" target="_blank" rel="noopener noreferrer">multishotgrpo ↗</a></div></article>
       </div>
       <div class="citation-card" id="citation"><div class="chart-heading"><div><span class="section-kicker">Citation</span><h3>If REEL helps your research</h3></div><button class="button button-secondary" id="copy-bibtex" type="button">Copy BibTeX</button></div><pre tabindex="0"><code id="bibtex">@misc{xu2026reel,
   title = {REEL: Learning to Retrieve, Evaluate, and Evolve Visual Memory
