@@ -1,0 +1,496 @@
+{
+  "source": {
+    "document": "REEL preprint",
+    "tables": [
+      "1",
+      "2",
+      "3(a)",
+      "3(b)",
+      "3(c)"
+    ],
+    "sha256": "eb649745e90740c7aab8699069f8d423040851297cee4ba42fab267dfe8a401f",
+    "scope": "Values reported in the accompanying manuscript. Quality scores include only complete, decodable stories; average completed shots includes all attempts."
+  },
+  "backendNames": {
+    "echo": "JoyAI-Echo 1.5",
+    "h3": "MiniMax-H3"
+  },
+  "benchmarks": {
+    "reel": {
+      "name": "REEL-Bench",
+      "precision": 2,
+      "maximum": 100,
+      "defaultMetric": "core",
+      "metrics": [
+        {
+          "key": "core",
+          "label": "Core-100",
+          "short": "Core",
+          "description": "Overall visual quality on REEL-Bench."
+        },
+        {
+          "key": "pf",
+          "label": "Prompt following",
+          "short": "PF",
+          "description": "Shot-level adherence to the requested content."
+        },
+        {
+          "key": "ref",
+          "label": "Reference alignment",
+          "short": "Ref.",
+          "description": "Alignment with available references, when applicable."
+        },
+        {
+          "key": "vq",
+          "label": "Visual quality",
+          "short": "VQ",
+          "description": "Shot-level visual quality."
+        },
+        {
+          "key": "motion",
+          "label": "Motion quality",
+          "short": "Motion",
+          "description": "Shot-level motion quality."
+        },
+        {
+          "key": "cons",
+          "label": "Cross-shot consistency",
+          "short": "Cons.",
+          "description": "Story-level cross-shot visual consistency."
+        },
+        {
+          "key": "state",
+          "label": "State compliance",
+          "short": "State",
+          "description": "Adherence to requested state changes, when applicable."
+        },
+        {
+          "key": "narr",
+          "label": "Narrative coherence",
+          "short": "Narr.",
+          "description": "Story-level narrative coherence."
+        }
+      ],
+      "backends": {
+        "echo": [
+          {
+            "id": "no-memory",
+            "name": "No Generated Memory",
+            "values": {
+              "core": 50.35,
+              "pf": 47.73,
+              "ref": 44,
+              "vq": 74.67,
+              "motion": 58.56,
+              "cons": 45.83,
+              "state": 35,
+              "narr": 39.17
+            }
+          },
+          {
+            "id": "fifo",
+            "name": "Recent Memory (FIFO)",
+            "values": {
+              "core": 48.55,
+              "pf": 43.57,
+              "ref": 37.22,
+              "vq": 69.35,
+              "motion": 57.52,
+              "cons": 50,
+              "state": 35.83,
+              "narr": 39.17
+            }
+          },
+          {
+            "id": "clip",
+            "name": "CLIP-based Retrieval",
+            "values": {
+              "core": 51.16,
+              "pf": 45.69,
+              "ref": 39.34,
+              "vq": 72.18,
+              "motion": 58.81,
+              "cons": 55,
+              "state": 37.5,
+              "narr": 40.83
+            }
+          },
+          {
+            "id": "storymem",
+            "name": "StoryMem-style Memory",
+            "values": {
+              "core": 50.53,
+              "pf": 45.68,
+              "ref": 38.3,
+              "vq": 70.89,
+              "motion": 57.83,
+              "cons": 55,
+              "state": 35.83,
+              "narr": 40
+            }
+          },
+          {
+            "id": "director",
+            "name": "DirectorAgent (Claude)",
+            "values": {
+              "core": 51.55,
+              "pf": 47.07,
+              "ref": 41.12,
+              "vq": 73.18,
+              "motion": 59.59,
+              "cons": 52.86,
+              "state": 37.45,
+              "narr": 41.2
+            }
+          },
+          {
+            "id": "reel",
+            "name": "REEL",
+            "values": {
+              "core": 52.76,
+              "pf": 50.19,
+              "ref": 41.1,
+              "vq": 74.81,
+              "motion": 63.61,
+              "cons": 49.17,
+              "state": 39.17,
+              "narr": 45
+            }
+          }
+        ],
+        "h3": [
+          {
+            "id": "no-memory",
+            "name": "No Generated Memory",
+            "values": {
+              "core": 47.16,
+              "pf": 44.54,
+              "ref": 40.81,
+              "vq": 71.48,
+              "motion": 55.37,
+              "cons": 42.65,
+              "state": 31.81,
+              "narr": 35.98
+            }
+          },
+          {
+            "id": "fifo",
+            "name": "Recent Memory (FIFO)",
+            "values": {
+              "core": 51.25,
+              "pf": 46.27,
+              "ref": 39.92,
+              "vq": 72.05,
+              "motion": 60.22,
+              "cons": 52.7,
+              "state": 38.53,
+              "narr": 41.87
+            }
+          },
+          {
+            "id": "clip",
+            "name": "CLIP-based Retrieval",
+            "values": {
+              "core": 50,
+              "pf": 44.53,
+              "ref": 38.19,
+              "vq": 71.03,
+              "motion": 57.66,
+              "cons": 53.84,
+              "state": 36.34,
+              "narr": 39.68
+            }
+          },
+          {
+            "id": "storymem",
+            "name": "StoryMem-style Memory",
+            "values": {
+              "core": 50.25,
+              "pf": 45.4,
+              "ref": 38.03,
+              "vq": 70.61,
+              "motion": 57.55,
+              "cons": 54.72,
+              "state": 35.55,
+              "narr": 39.72
+            }
+          },
+          {
+            "id": "director",
+            "name": "DirectorAgent (Claude)",
+            "values": {
+              "core": 51.23,
+              "pf": 46.75,
+              "ref": 40.8,
+              "vq": 72.86,
+              "motion": 59.27,
+              "cons": 52.54,
+              "state": 37.13,
+              "narr": 40.88
+            }
+          },
+          {
+            "id": "reel",
+            "name": "REEL",
+            "values": {
+              "core": 55.48,
+              "pf": 52.91,
+              "ref": 43.82,
+              "vq": 77.53,
+              "motion": 66.33,
+              "cons": 51.89,
+              "state": 41.89,
+              "narr": 47.72
+            }
+          }
+        ]
+      }
+    },
+    "st": {
+      "name": "ST-Bench",
+      "precision": 3,
+      "maximum": 1,
+      "defaultMetric": "cons",
+      "metrics": [
+        {
+          "key": "aesthetic",
+          "label": "Aesthetic quality",
+          "short": "Aesthetic",
+          "description": "LAION aesthetic quality on ST-Bench."
+        },
+        {
+          "key": "globalPf",
+          "label": "Global prompt following",
+          "short": "Global PF",
+          "description": "ViCLIP-based global prompt following."
+        },
+        {
+          "key": "shotPf",
+          "label": "Shot prompt following",
+          "short": "Shot PF",
+          "description": "ViCLIP-based shot-level prompt following."
+        },
+        {
+          "key": "cons",
+          "label": "Cross-shot consistency",
+          "short": "Cons.",
+          "description": "Overall cross-shot consistency on ST-Bench."
+        },
+        {
+          "key": "top10",
+          "label": "Top-10 consistency",
+          "short": "Top-10",
+          "description": "Consistency of the top-10 text-selected shot pairs."
+        }
+      ],
+      "backends": {
+        "echo": [
+          {
+            "id": "no-memory",
+            "name": "No Generated Memory",
+            "values": {
+              "aesthetic": 0.598,
+              "globalPf": 0.226,
+              "shotPf": 0.245,
+              "cons": 0.457,
+              "top10": 0.489
+            }
+          },
+          {
+            "id": "fifo",
+            "name": "Recent Memory (FIFO)",
+            "values": {
+              "aesthetic": 0.593,
+              "globalPf": 0.225,
+              "shotPf": 0.237,
+              "cons": 0.497,
+              "top10": 0.525
+            }
+          },
+          {
+            "id": "clip",
+            "name": "CLIP-based Retrieval",
+            "values": {
+              "aesthetic": 0.596,
+              "globalPf": 0.23,
+              "shotPf": 0.239,
+              "cons": 0.515,
+              "top10": 0.541
+            }
+          },
+          {
+            "id": "storymem",
+            "name": "StoryMem-style Memory",
+            "values": {
+              "aesthetic": 0.595,
+              "globalPf": 0.225,
+              "shotPf": 0.239,
+              "cons": 0.511,
+              "top10": 0.534
+            }
+          },
+          {
+            "id": "director",
+            "name": "DirectorAgent (Claude)",
+            "values": {
+              "aesthetic": 0.607,
+              "globalPf": 0.234,
+              "shotPf": 0.24,
+              "cons": 0.52,
+              "top10": 0.548
+            }
+          },
+          {
+            "id": "reel",
+            "name": "REEL",
+            "values": {
+              "aesthetic": 0.604,
+              "globalPf": 0.231,
+              "shotPf": 0.242,
+              "cons": 0.526,
+              "top10": 0.564
+            }
+          }
+        ],
+        "h3": [
+          {
+            "id": "no-memory",
+            "name": "No Generated Memory",
+            "values": {
+              "aesthetic": 0.598,
+              "globalPf": 0.224,
+              "shotPf": 0.234,
+              "cons": 0.44,
+              "top10": 0.49
+            }
+          },
+          {
+            "id": "fifo",
+            "name": "Recent Memory (FIFO)",
+            "values": {
+              "aesthetic": 0.59,
+              "globalPf": 0.227,
+              "shotPf": 0.229,
+              "cons": 0.489,
+              "top10": 0.53
+            }
+          },
+          {
+            "id": "clip",
+            "name": "CLIP-based Retrieval",
+            "values": {
+              "aesthetic": 0.592,
+              "globalPf": 0.223,
+              "shotPf": 0.238,
+              "cons": 0.521,
+              "top10": 0.548
+            }
+          },
+          {
+            "id": "storymem",
+            "name": "StoryMem-style Memory",
+            "values": {
+              "aesthetic": 0.589,
+              "globalPf": 0.222,
+              "shotPf": 0.233,
+              "cons": 0.514,
+              "top10": 0.54
+            }
+          },
+          {
+            "id": "director",
+            "name": "DirectorAgent (Claude)",
+            "values": {
+              "aesthetic": 0.605,
+              "globalPf": 0.237,
+              "shotPf": 0.243,
+              "cons": 0.529,
+              "top10": 0.557
+            }
+          },
+          {
+            "id": "reel",
+            "name": "REEL",
+            "values": {
+              "aesthetic": 0.617,
+              "globalPf": 0.235,
+              "shotPf": 0.24,
+              "cons": 0.531,
+              "top10": 0.571
+            }
+          }
+        ]
+      }
+    }
+  },
+  "training": [
+    {
+      "name": "Qwen3.5-9B",
+      "shot": null,
+      "story": null,
+      "completedShots": 0.8
+    },
+    {
+      "name": "+ SFT",
+      "shot": 55.18,
+      "story": 43.98,
+      "completedShots": 5.5
+    },
+    {
+      "name": "+ Sig. GRPO",
+      "shot": 56.11,
+      "story": 45.38,
+      "completedShots": 7.8
+    },
+    {
+      "name": "REEL",
+      "shot": 57.51,
+      "story": 45.62,
+      "completedShots": 9
+    }
+  ],
+  "memory": [
+    {
+      "name": "w/o retrieval",
+      "shot": 49.92,
+      "story": 35.26
+    },
+    {
+      "name": "w/o creation",
+      "shot": 54.27,
+      "story": 42.78
+    },
+    {
+      "name": "w/o review",
+      "shot": 57.11,
+      "story": 42.49
+    },
+    {
+      "name": "REEL",
+      "shot": 57.51,
+      "story": 45.62
+    }
+  ],
+  "transfer": [
+    {
+      "name": "JoyAI-Echo 1.0",
+      "shot": 53.59,
+      "story": 43.03
+    },
+    {
+      "name": "Seedance 2.0",
+      "shot": 57.32,
+      "story": 45.05
+    },
+    {
+      "name": "Seedance 2.5",
+      "shot": 58.31,
+      "story": 46.29
+    },
+    {
+      "name": "Kling 3.0",
+      "shot": 57.57,
+      "story": 46.11
+    }
+  ]
+}

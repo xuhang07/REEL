@@ -1,0 +1,46 @@
+tools:
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: view_material_registry
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: search_memory_bank
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: view_memories
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: generate_image
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: inspect_candidate
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: submit_candidate_assessment
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: update_memory_bank
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: submit_evidence_plan
+    tool_schema: null
+  - class_name: verl_recipe.storymem_memory_policy_rl.tools.CanonicalMemoryPolicyTool
+    config:
+      type: native
+      tool_name: finish_memory_session
+    tool_schema: null

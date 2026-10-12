@@ -1,0 +1,13 @@
+--- a/sglang/jit_kernel/clamp_position.py
++++ b/sglang/jit_kernel/clamp_position.py
+@@ -28,6 +28,10 @@ def clamp_position_cuda(seq_lens: torch.Tensor) -> torch.Tensor:
+ 
+     Supported dtypes: torch.int32, torch.int64.
+     """
++    # CUDA 12.6 cannot JIT SGLang's extension for Blackwell SM120.  This
++    # elementwise expression is equivalent and stays on the input device.
++    if seq_lens.is_cuda and torch.cuda.get_device_capability(seq_lens.device)[0] >= 12:
++        return torch.clamp(seq_lens - 1, min=0)
+     dst = torch.empty_like(seq_lens)
+     module = _jit_clamp_position_module(seq_lens.dtype)
+     module.clamp_position(dst, seq_lens)

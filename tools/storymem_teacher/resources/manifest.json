@@ -1,0 +1,157 @@
+{
+  "schema_version": "storymem.pe-resources.v2",
+  "revision": "reel-public-20261012",
+  "fallback_policy": "forbidden",
+  "resource_order": "listed",
+  "profiles": {
+    "image": {
+      "id": "image_general",
+      "revision": "canonical-r2-official-pe",
+      "generator_profile_id": "image.generic.v1",
+      "language_policy": "full_caption_locked",
+      "validation_contract": {
+        "validator_id": "image_prompt_v1",
+        "max_chars_exclusive": 2000,
+        "max_tokens": null,
+        "tokenizer_profile_id": null
+      },
+      "routes": [
+        "image.compose",
+        "image.revise"
+      ]
+    },
+    "video": {
+      "id": "v7_cinematic_full",
+      "revision": "canonical-r2-official-pe",
+      "generator_profile_id": "video.echo_1_5.r2v_v1",
+      "language_policy": "full_caption_locked",
+      "validation_contract": {
+        "validator_id": "director_v7_video_prompt_v1",
+        "min_chars_inclusive": 1500,
+        "max_chars_exclusive": 2000,
+        "max_tokens": 1024,
+        "tokenizer_profile_id": "video_text_encoder_v1",
+        "format_profile_id": "director.v7_cinematic_full"
+      },
+      "routes": [
+        "video.compose",
+        "video.revise"
+      ]
+    }
+  },
+  "resources": {
+    "common.prompt_authoring": {
+      "path": "common/prompt_authoring.md",
+      "sha256": "sha256:71132fe9279d1c6bd17398de31d65cf4ab9e04899675ca4bda285a20a514dd04"
+    },
+    "story.planner": {
+      "path": "story/planner.md",
+      "revision": "story-planner-v4-visible-person-binding",
+      "sha256": "sha256:573961bdf8db130cc94bd179653890c74adcd42749c61b80a1df806f122600e7"
+    },
+    "story.preparation": {
+      "path": "story/preparation.md",
+      "revision": "story-adapter-v5-visible-person-binding",
+      "sha256": "sha256:de8a256bcb266b049c6bf2ba3e5f6e71f35133f26db871765c242f7469e03ce2"
+    },
+    "image.core": {
+      "path": "image/core.md",
+      "sha256": "sha256:3196e5f82f7348cf30d122a4be3f4d1c5430ef2f45ab225034e7dd7c074312b6"
+    },
+    "image.compose": {
+      "path": "image/compose.md",
+      "sha256": "sha256:35f952bc0682ff0205ea7551cfe9d0ca84ac2ef45228fcbde3f753b41a39a017"
+    },
+    "image.revise": {
+      "path": "image/revise.md",
+      "sha256": "sha256:1162176cdc92c1bf80d4a803e17e5d90a6a500115857a413c06df22bd47991ff"
+    },
+    "image.purpose.first_frame": {
+      "path": "image/purpose_first_frame.md",
+      "sha256": "sha256:8bb7624decd2237f6f6a7e43b7cb8812b9fd6cda8c3188d163c5ff33878bb7c7"
+    },
+    "image.purpose.reference_asset": {
+      "path": "image/purpose_reference_asset.md",
+      "sha256": "sha256:83bdaefbed251da2487b8f4e33870199430eadedbe655a374a9a9b5f933d70c1"
+    },
+    "image.references.absent": {
+      "path": "image/references_absent.md",
+      "sha256": "sha256:27efec1e41e7993b9d46bb928c55b42ff1858ab191e83a35f6349cdaf4eb21ad"
+    },
+    "image.references.present": {
+      "path": "image/references_present.md",
+      "sha256": "sha256:8b5d674919965e808c33cf9eb5e93571e35c8822a16e1d7a994dc5fb8936830b"
+    },
+    "director.video.v7.shot_prompt_writer": {
+      "source_root": "director_pe",
+      "path": "v7_cinematic_full/references/shot-prompt-writer.md",
+      "revision": "director.v7_cinematic_full.public-20261012",
+      "sha256": "sha256:dd95f9058e31c3061ade84b1839dcdd88e0c2ca652e2220c302eec05b4ff09d6",
+      "previously_declared_sha256": "sha256:6eb1ec73a339590ec45d0c7b14c9b0988a90022388a91c7f06dac69067a826f6",
+      "release_note": "The inherited manifest did not match the checked-in prompt. This public revision binds the actual checked-in file; it is not an assertion of identity with a historical training snapshot."
+    },
+    "director.video.v7.tail_frame_prompt_rewriter": {
+      "source_root": "director_pe",
+      "path": "v7_cinematic_full/skills/i2v-tail-frame-prompt-rewriter/SKILL.md",
+      "revision": "director.v7_cinematic_full",
+      "sha256": "sha256:d83dc621da3320cc0f5cf939fd24842b3282a255025dfc375bc80532670d7857"
+    },
+    "storymem.video.tool_adapter": {
+      "path": "video/tool_adapter.md",
+      "revision": "storymem-adapter-r1",
+      "sha256": "sha256:932680cb9a8f4ef71a50eaf2a9a9dc75aa48ca320b726789fd2453707cd66c55"
+    }
+  },
+  "routes": {
+    "image.compose": [
+      "common.prompt_authoring",
+      "image.core",
+      "image.compose"
+    ],
+    "image.revise": [
+      "common.prompt_authoring",
+      "image.core",
+      "image.revise"
+    ],
+    "video.compose": [
+      "director.video.v7.shot_prompt_writer"
+    ],
+    "video.revise": [
+      "director.video.v7.shot_prompt_writer"
+    ]
+  },
+  "context_resources": {
+    "image_purpose": {
+      "first_frame": [
+        "image.purpose.first_frame"
+      ],
+      "reference_asset": [
+        "image.purpose.reference_asset"
+      ]
+    },
+    "image_reference_inputs": {
+      "false": [
+        "image.references.absent"
+      ],
+      "true": [
+        "image.references.present"
+      ]
+    },
+    "video_condition": {
+      "none": [
+        "storymem.video.tool_adapter"
+      ],
+      "frame0_match": [
+        "storymem.video.tool_adapter"
+      ],
+      "temporal_continuation": [
+        "director.video.v7.tail_frame_prompt_rewriter",
+        "storymem.video.tool_adapter"
+      ]
+    }
+  },
+  "story_preparation": [
+    "story.planner",
+    "story.preparation"
+  ]
+}

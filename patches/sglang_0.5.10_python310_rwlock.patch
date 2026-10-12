@@ -1,0 +1,19 @@
+--- a/sglang/srt/utils/aio_rwlock.py
++++ b/sglang/srt/utils/aio_rwlock.py
+@@ -3,11 +3,11 @@
+ 
+ class RWLock:
+     def __init__(self):
+-        # Protects internal state
+-        self._lock = asyncio.Lock()
+-
+-        # Condition variable used to wait for state changes
+-        self._cond = asyncio.Condition(self._lock)
++        # Python 3.10.0 may bind a freshly constructed Lock and Condition to
++        # different implicit loops.  Let Condition own the lock and use the
++        # same object for the async context-manager operations below.
++        self._cond = asyncio.Condition()
++        self._lock = self._cond
+ 
+         # Number of readers currently holding the lock
+         self._readers = 0

@@ -1,0 +1,2 @@
+- name: storymem_memory_policy_online_agent
+  _target_: verl_recipe.storymem_memory_policy_rl.online_agent_loop.StoryMemMemoryPolicyOnlineAgentLoop

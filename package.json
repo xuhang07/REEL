@@ -1,0 +1,12 @@
+{
+  "name": "reel-project-page",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "node scripts/serve.mjs",
+    "test:site": "node scripts/test-site.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2"
+  }
+}

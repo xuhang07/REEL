@@ -1,0 +1,16 @@
+--- a/sglang/srt/multimodal/processors/qwen_vl.py
++++ b/sglang/srt/multimodal/processors/qwen_vl.py
+@@ -277,6 +277,11 @@
+             image_token_regex=re.compile(
+                 r"<\|vision_start\|>(?:<\|image_pad\|>)+<\|vision_end\|>"
+             ),
++            video_token="<|vision_start|><|video_pad|><|vision_end|>",
++            # Match one processor-expanded video span as one media item.  If
++            # every video_pad token is matched separately, one video exhausts
++            # the data iterator before SGLang can build its embeddings.
++            video_token_regex=re.compile(
++                r"<\|vision_start\|>(?:<\|video_pad\|>)+<\|vision_end\|>"
++            ),
+             video_token_id=self.VIDEO_TOKEN_ID,
+             audio_token_id=self.audio_token_id,
+         ).build(_processor)

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#246485">
+  <meta name="description" content="REEL learns visual-memory planning for long-horizon multi-shot video generation. Explore examples across video backends, the main results, and the code.">
+  <meta property="og:title" content="REEL — Visual memory for longer stories">
+  <meta property="og:description" content="One memory planner. Multiple video backends. Explore the examples, paper, and code.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xuhang07.github.io/REEL/">
+  <meta property="og:image" content="https://xuhang07.github.io/REEL/assets/teaser.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://xuhang07.github.io/REEL/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>REEL | Visual Memory for Any Long-Horizon Multi-Shot Video Generation</title>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="nav-shell">
+    <a class="brand" href="#main" aria-label="REEL home"><span class="brand-mark" aria-hidden="true">R</span> REEL</a>
+    <nav aria-label="Main navigation"><a href="#examples">Examples</a><a href="#results">Results</a><a href="#method">Method</a><a href="#resources">Resources</a></nav>
+    <a class="nav-code" href="https://github.com/xuhang07/REEL" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </div></header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="paper-title">
+      <div class="eyebrow"><span class="status-dot"></span> Visual memory · Multi-shot video · Preprint</div>
+      <h1 id="paper-title"><span class="hero-wordmark">REEL</span><span class="hero-title">Learning to Retrieve, Evaluate, and Evolve Visual Memory</span></h1>
+      <p class="hero-subtitle">for <em>Any</em> Long-Horizon Multi-Shot Video Generation</p>
+      <div class="authors" aria-label="Authors">
+        <span>Hang Xu<sup>1</sup></span><span>Guohui Zhang<sup>1</sup></span><span>Xiaoxiao Ma<sup>1</sup></span><span>Hu Yu<sup>1</sup></span><span>Jie Huang<sup>1</sup></span><span>Jiayin Xiao<sup>1</sup></span><span>Lin Song<sup>2</sup></span><span>Haoyang Huang<sup>2</sup></span><span>Nan Duan<sup>2</sup></span><span>Feng Zhao<sup>2</sup></span>
+      </div>
+      <div class="affiliations"><span><sup>1</sup> University of Science and Technology of China</span><span><sup>2</sup> JD Explore Academy</span></div>
+      <div class="hero-actions">
+        <a class="button button-primary" href="assets/reel.pdf" target="_blank" rel="noopener">Read the paper ↗</a>
+        <a class="button button-secondary" href="https://github.com/xuhang07/REEL" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg> Code</a>
+        <span class="button button-unavailable" aria-label="Hugging Face weights, coming soon">Hugging Face <span class="tiny-badge">Coming soon</span></span>
+        <a class="citation-link" href="#citation">BibTeX ↓</a>
+      </div>
+      <p class="hero-tldr">One planner learns <strong>what to remember</strong> and <strong>when to reuse it</strong>.<br class="desktop-break"> Different video backends bring the story to life.</p>
+    </section>
+
+    <section class="container case-section" id="examples" aria-labelledby="examples-title">
+      <div class="section-kicker">01 / REEL in action</div>
+      <div class="section-heading"><h2 id="examples-title">A reference.<br>A story that continues.</h2><p>Explore selected moments from four stories in the paper. Click any sequence for a closer look.</p></div>
+      <div class="case-filters" role="group" aria-label="Filter examples by backend">
+        <button type="button" data-case-filter="all" aria-pressed="true">All examples</button>
+        <button type="button" data-case-filter="echo" aria-pressed="false">JoyAI-Echo</button>
+        <button type="button" data-case-filter="h3" aria-pressed="false">MiniMax-H3</button>
+        <button type="button" data-case-filter="seedance" aria-pressed="false">Seedance</button>
+      </div>
+      <div class="case-gallery">
+        <article class="case-card" data-case-backend="echo">
+          <div class="case-heading"><div><span class="case-index">STORY 01</span><h3>The First Frost at High Pine</h3></div><span class="backend-badge">JoyAI-Echo 1.0</span></div>
+          <button type="button" class="image-zoom case-image" data-image="assets/case-high-pine.webp" data-caption="The First Frost at High Pine — JoyAI-Echo 1.0. Reference and selected frames from shots 1, 6, 8, and 12." aria-label="Enlarge the High Pine story"><img src="assets/case-high-pine.webp" alt="Visual reference followed by selected frames: steam rises, pass the mug, overcast sky, and fresh snowfall." width="1800" height="264" fetchpriority="high"><span class="zoom-hint">Explore frames ↗</span></button>
+          <div class="case-footer"><p>A warm mug, changing weather, and the first snowfall.</p><span>Shots 1 · 6 · 8 · 12</span></div>
+        </article>
+        <article class="case-card" data-case-backend="echo">
+          <div class="case-heading"><div><span class="case-index">STORY 02</span><h3>A Teenage Courier and a Cracked Lantern</h3></div><span class="backend-badge">JoyAI-Echo 1.5</span></div>
+          <button type="button" class="image-zoom case-image" data-image="assets/case-courier.webp" data-caption="A Teenage Courier and a Cracked Lantern — JoyAI-Echo 1.5. Reference and selected frames from shots 2, 5, 7, and 8." aria-label="Enlarge the courier story"><img src="assets/case-courier.webp" alt="Visual reference and selected frames: lift the lantern, meet at the pier, museum return, and meet again." width="1800" height="264" loading="lazy"><span class="zoom-hint">Explore frames ↗</span></button>
+          <div class="case-footer"><p>A lantern, a meeting at the pier, and a later reunion.</p><span>Shots 2 · 5 · 7 · 8</span></div>
+        </article>
+        <article class="case-card" data-case-backend="h3">
+          <div class="case-heading"><div><span class="case-index">STORY 03</span><h3>The Cobalt Guardian and the Calico</h3></div><span class="backend-badge">MiniMax-H3</span></div>
+          <button type="button" class="image-zoom case-image" data-image="assets/case-guardian.webp" data-caption="The Cobalt Guardian and the Calico — MiniMax-H3. Reference and selected frames from shots 1, 6, 8, and 13." aria-label="Enlarge the guardian story"><img src="assets/case-guardian.webp" alt="Visual reference and selected frames: on the pier, take shelter, shield the cat, and sunrise together." width="1800" height="264" loading="lazy"><span class="zoom-hint">Explore frames ↗</span></button>
+          <div class="case-footer"><p>From the pier to shelter, then into the sunrise.</p><span>Shots 1 · 6 · 8 · 13</span></div>
+        </article>
+        <article class="case-card" data-case-backend="seedance">
+          <div class="case-heading"><div><span class="case-index">STORY 04</span><h3>The Weaver’s Ribbon</h3></div><span class="backend-badge">Seedance 2.0</span></div>
+          <button type="button" class="image-zoom case-image" data-image="assets/case-ribbon.webp" data-caption="The Weaver's Ribbon — Seedance 2.0. Reference and selected frames from shots 4, 5, 12, and 15." aria-label="Enlarge the ribbon story"><img src="assets/case-ribbon.webp" alt="Visual reference and selected frames: ribbon dance, add a robe, hold a lotus, and rest at dusk." width="1800" height="260" loading="lazy"><span class="zoom-hint">Explore frames ↗</span></button>
+          <div class="case-footer"><p>A ribbon dance across costume, prop, and scene changes.</p><span>Shots 4 · 5 · 12 · 15</span></div>
+        </article>
+      </div>
+      <p class="source-note">Selected frames from the paper’s teaser, not consecutive video playback. Original shot indices are retained.</p>
+    </section>
+
+    <section class="section-band" id="results" aria-labelledby="results-title"><div class="container">
+      <div class="section-kicker">02 / Main results</div>
+      <div class="section-heading"><h2 id="results-title">A closer look<br>at the gains.</h2><p>REEL, the no-memory baseline, and DirectorAgent. Two benchmarks, two backends, and the primary metrics.</p></div>
+      <div class="headline-results" id="headline-results" aria-label="Main improvements"><div class="loading-placeholder">Loading results…</div></div>
+      <div class="results-workbench">
+        <div class="results-controls"><div class="segmented" role="tablist" aria-label="Benchmark"><button type="button" id="bench-reel" role="tab" aria-controls="benchmark-panel" aria-selected="true" data-benchmark="reel">REEL-Bench</button><button type="button" id="bench-st" role="tab" aria-controls="benchmark-panel" aria-selected="false" tabindex="-1" data-benchmark="st">ST-Bench</button></div><label class="select-label">Backend<select id="backend-select"><option value="echo">JoyAI-Echo 1.5</option><option value="h3">MiniMax-H3</option></select></label></div>
+        <div id="benchmark-panel" role="tabpanel" aria-labelledby="bench-reel">
+          <div class="chart-heading"><div><h3 id="chart-title">Core-100</h3><p id="chart-description">Overall visual quality on REEL-Bench.</p></div><label class="select-label">Metric<select id="metric-select"><option value="core">Core-100</option></select></label></div>
+          <div class="plot-scale-label"><span class="scale-break" aria-hidden="true">↔</span><span id="zoom-label">Zoomed score axis</span><span>Higher is better ↑</span></div>
+          <div class="main-dot-chart" id="main-chart" aria-label="Results dot plot"></div>
+          <div class="chart-axis" id="chart-axis" aria-hidden="true"></div>
+          <div id="score-gains" class="score-gains" aria-live="polite"></div>
+          <p class="chart-note" id="chart-note">The score axis is zoomed and does not start at zero. Marker positions show scores, not relative improvement percentages.</p>
+        </div>
+      </div>
+      <p class="source-note">Paper-reported scores on complete, decodable stories; failed and incomplete stories are excluded from quality averages. DirectorAgent uses Claude Opus 4.5. <a href="assets/reel.pdf" target="_blank" rel="noopener">Full comparisons and evaluation details in the paper ↗</a></p>
+      <p id="results-status" role="status" class="load-status"></p>
+      <noscript><p>View all reported scores in the <a href="assets/reel.pdf">paper</a> or <a href="results.json">results JSON</a>.</p></noscript>
+    </div></section>
+
+    <section class="container compact-method" id="method" aria-labelledby="method-title">
+      <div class="section-kicker">03 / The idea</div>
+      <div class="section-heading"><h2 id="method-title">Memory planning,<br>independent of the backend.</h2><p>REEL retrieves visual evidence, creates missing references, reviews candidates, and updates memory. Adapters translate its plans for each video backend.</p></div>
+      <div class="method-summary"><span><strong>Retrieve</strong> relevant evidence</span><span aria-hidden="true">→</span><span><strong>Evaluate</strong> the candidate</span><span aria-hidden="true">→</span><span><strong>Evolve</strong> visual memory</span></div>
+      <div class="figure-switch" role="tablist" aria-label="Method figures"><button type="button" id="figure-single" role="tab" aria-selected="true" aria-controls="method-figure" data-figure="framework">Single-shot pipeline</button><button type="button" id="figure-multi" role="tab" aria-selected="false" tabindex="-1" aria-controls="method-figure" data-figure="multishot">Memory across shots</button></div>
+      <figure class="image-panel" id="method-figure" role="tabpanel" aria-labelledby="figure-single"><button type="button" class="image-zoom" data-image="assets/framework.webp" data-caption="Single-shot inference with REEL." aria-label="Enlarge method figure"><img id="method-image" src="assets/framework.webp" alt="Single-shot inference with REEL: tool-based evidence planning, backend adaptation, candidate review, and memory updates." loading="lazy" width="1800" height="1002"><span class="zoom-hint">Expand figure ↗</span></button><figcaption id="method-caption">Only the planner is trained; adapters and video generators stay outside policy learning.</figcaption></figure>
+    </section>
+
+    <section class="section-band resources-section" id="resources" aria-labelledby="resources-title"><div class="container">
+      <div class="section-kicker">04 / Explore & build</div><div class="section-heading"><h2 id="resources-title">Take a closer look.</h2></div>
+      <div class="resource-grid">
+        <a class="resource-card" href="assets/reel.pdf" target="_blank" rel="noopener"><span class="resource-icon" aria-hidden="true">↗</span><span class="section-kicker">Paper</span><h3>Read the preprint</h3><p>The method, full results, and supplementary material.</p><span class="resource-action">Open PDF ↗</span></a>
+        <a class="resource-card" href="https://github.com/xuhang07/REEL" target="_blank" rel="noopener noreferrer"><span class="resource-icon" aria-hidden="true">⌘</span><span class="section-kicker">Implementation</span><h3>Explore the code</h3><p>Memory-planning tools, backend interfaces, and training components.</p><span class="resource-action">xuhang07 / REEL ↗</span></a>
+        <article class="resource-card resource-pending"><span class="resource-icon" aria-hidden="true">◷</span><span class="section-kicker">Hugging Face</span><h3>Planner weights</h3><p>Checkpoints will be linked here when available.</p><span class="tiny-badge">Coming soon</span></article>
+      </div>
+      <div class="citation-card" id="citation"><div class="chart-heading"><div><span class="section-kicker">Citation</span><h3>If REEL helps your research</h3></div><button class="button button-secondary" id="copy-bibtex" type="button">Copy BibTeX</button></div><pre tabindex="0"><code id="bibtex">@misc{xu2026reel,
+  title = {REEL: Learning to Retrieve, Evaluate, and Evolve Visual Memory
+           for Any Long-Horizon Multi-Shot Video Generation},
+  author = {Hang Xu and Guohui Zhang and Xiaoxiao Ma and Hu Yu and
+            Jie Huang and Jiayin Xiao and Lin Song and Haoyang Huang and
+            Nan Duan and Feng Zhao},
+  year = {2026},
+  note = {Preprint},
+  url = {https://xuhang07.github.io/REEL/}
+}</code></pre><span id="copy-status" class="copy-status" role="status"></span></div>
+    </div></section>
+  </main>
+  <footer class="container site-footer"><a class="brand" href="#main">REEL<span class="footer-tagline">Visual memory for longer stories.</span></a><p>University of Science and Technology of China · JD Explore Academy</p><a href="https://github.com/xuhang07/REEL">Project repository ↗</a></footer>
+  <dialog id="figure-dialog" aria-labelledby="dialog-caption"><button type="button" class="dialog-close" aria-label="Close enlarged figure">Close ×</button><img id="dialog-image" alt=""><p id="dialog-caption"></p></dialog>
+</body>
+</html>
